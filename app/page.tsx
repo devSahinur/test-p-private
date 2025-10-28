@@ -135,7 +135,7 @@ function HomeContent() {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "name": "EpornerHub",
+    "name": "3xl",
     "url": "http://localhost:3003",
     "description": "Stream millions of free HD adult videos. Browse by category or search by keyword.",
     "potentialAction": {
@@ -148,7 +148,7 @@ function HomeContent() {
     },
     "publisher": {
       "@type": "Organization",
-      "name": "EpornerHub",
+      "name": "3xl",
       "logo": {
         "@type": "ImageObject",
         "url": "http://localhost:3003/logo.png"
