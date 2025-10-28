@@ -4,14 +4,14 @@ import AgeVerification from "@/components/AgeVerification";
 
 export const metadata: Metadata = {
   title: {
-    default: "EpornerHub - Free HD Adult Videos | Stream Premium Content",
-    template: "%s | EpornerHub"
+    default: "3xl - Free HD Adult Videos | Stream Premium Content",
+    template: "%s | 3xl"
   },
   description: "Stream millions of free HD adult videos powered by Eporner. Browse by category, search by keyword, and watch premium content. Updated daily with trending videos.",
   keywords: ["free adult videos", "hd porn", "eporner", "adult entertainment", "18+", "free streaming", "adult videos", "xxx videos", "porn hub alternative"],
-  authors: [{ name: "EpornerHub" }],
-  creator: "EpornerHub",
-  publisher: "EpornerHub",
+  authors: [{ name: "3xl" }],
+  creator: "3xl",
+  publisher: "3xl",
   robots: {
     index: true,
     follow: true,
@@ -27,21 +27,21 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: 'http://localhost:3003',
-    siteName: 'EpornerHub',
-    title: 'EpornerHub - Free HD Adult Videos',
+    siteName: '3xl',
+    title: '3xl - Free HD Adult Videos',
     description: 'Stream millions of free HD adult videos. Browse trending content, search by keyword, and enjoy premium quality streaming.',
     images: [
       {
         url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'EpornerHub - Free HD Adult Videos',
+        alt: '3xl - Free HD Adult Videos',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'EpornerHub - Free HD Adult Videos',
+    title: '3xl - Free HD Adult Videos',
     description: 'Stream millions of free HD adult videos. Browse trending content and enjoy premium quality.',
     images: ['/og-image.jpg'],
   },

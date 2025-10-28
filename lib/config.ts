@@ -16,7 +16,7 @@ export const EPORNER_API = {
 };
 
 export const SITE_CONFIG = {
-  name: 'EpornerHub',
+  name: '3xl',
   description: 'Stream HD adult videos powered by Eporner',
   tagline: 'Free HD Adult Videos',
   url: process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3002',
