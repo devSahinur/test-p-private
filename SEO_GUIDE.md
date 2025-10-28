@@ -187,8 +187,8 @@ JSON-LD (JavaScript Object Notation for Linked Data) helps search engines unders
   "@type": "ContactPage",
   "mainEntity": {
     "@type": "Organization",
-    "name": "EpornerHub",
-    "email": "support@epornerhub.com",
+    "name": "3xl",
+    "email": "support@3lx.org",
     "contactPoint": {
       "@type": "ContactPoint",
       "contactType": "Customer Support"

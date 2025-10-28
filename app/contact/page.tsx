@@ -43,17 +43,17 @@ export default function ContactPage() {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "ContactPage",
-    "name": "Contact Us - EpornerHub",
-    "description": "Get in touch with EpornerHub. Contact us for support, partnerships, advertising, or general inquiries.",
+    "name": "Contact Us - 3xl",
+    "description": "Get in touch with 3xl. Contact us for support, partnerships, advertising, or general inquiries.",
     "url": "http://localhost:3003/contact",
     "mainEntity": {
       "@type": "Organization",
-      "name": "EpornerHub",
-      "email": "support@epornerhub.com",
+      "name": "3xl",
+      "email": "support@3lx.org",
       "contactPoint": {
         "@type": "ContactPoint",
         "contactType": "Customer Support",
-        "email": "support@epornerhub.com",
+        "email": "support@3lx.org",
         "availableLanguage": "English"
       }
     }
@@ -99,7 +99,7 @@ export default function ContactPage() {
                     </svg>
                     <div>
                       <p className="text-white font-medium">Email</p>
-                      <p className="text-gray-400 text-sm">support@epornerhub.com</p>
+                      <p className="text-gray-400 text-sm">support@3lx.org</p>
                     </div>
                   </div>
 

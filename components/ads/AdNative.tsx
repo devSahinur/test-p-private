@@ -47,13 +47,15 @@ export default function AdNative({ adId, className = '' }: AdNativeProps) {
   }
 
   return (
-    <div className={`my-4 ${className}`}>
-      <div ref={adRef} className="native-ad-container">
+    <div className={`my-4 w-full ${className}`}>
+      <div ref={adRef} className="native-ad-container w-full overflow-hidden">
         <ins
           className="juicyads-ad"
           data-zone={adId}
           style={{
             display: 'block',
+            width: '100%',
+            maxWidth: '100%'
           }}
         />
         <div className="text-center text-gray-600 text-xs mt-2">

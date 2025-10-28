@@ -224,7 +224,7 @@ Since Eporner owns the content and you're just embedding, **you monetize with ad
 **Update `lib/config.ts`:**
 ```typescript
 export const SITE_CONFIG = {
-  name: 'EpornerHub',
+  name: '3xl',
   description: 'Stream HD adult videos powered by Eporner',
   tagline: 'Free HD Adult Videos',
   ageVerificationRequired: true,

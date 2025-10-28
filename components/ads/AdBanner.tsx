@@ -51,20 +51,26 @@ export default function AdBanner({ adId, width = 728, height = 90, className = '
   }
 
   return (
-    <div className={`flex justify-center items-center my-4 ${className}`}>
+    <div className={`flex justify-center items-center my-4 w-full ${className}`}>
       <div
         ref={adRef}
-        className="ad-container"
-        style={{ minWidth: width, minHeight: height }}
+        className="ad-container w-full"
+        style={{
+          maxWidth: `${width}px`,
+          minHeight: height,
+          overflow: 'hidden'
+        }}
       >
         {/* JuicyAds Ad Code - Replace with your actual ad code */}
         <ins
           className="juicyads-ad"
           data-zone={adId}
           style={{
-            display: 'inline-block',
-            width: `${width}px`,
-            height: `${height}px`
+            display: 'block',
+            width: '100%',
+            maxWidth: `${width}px`,
+            height: `${height}px`,
+            margin: '0 auto'
           }}
         />
 
