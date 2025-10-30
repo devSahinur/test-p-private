@@ -10,10 +10,16 @@ interface Ad3lxProps {
 }
 
 /**
- * 3lx.org Mobile Banner Component (320x50)
+ * 3lx.org Banner Component (All Sizes)
  *
  * This component loads ads from highperformanceformat.com (3lx.org network)
- * Optimized for mobile devices with 320x50 banner format
+ * Supports all banner sizes:
+ * - 728x90 (Leaderboard)
+ * - 468x60 (Banner)
+ * - 300x250 (Medium Rectangle) - Most Popular
+ * - 320x50 (Mobile Banner)
+ * - 160x600 (Wide Skyscraper)
+ * - 160x300 (Skyscraper)
  */
 export default function Ad3lx({
   adKey,

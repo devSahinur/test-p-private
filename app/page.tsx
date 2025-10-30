@@ -7,14 +7,15 @@ import SearchBar from '@/components/SearchBar';
 import CategoryFilter from '@/components/CategoryFilter';
 import VideoCard from '@/components/VideoCard';
 import ScrollToTop from '@/components/ScrollToTop';
-import AdBanner from '@/components/ads/AdBanner';
-import AdNative from '@/components/ads/AdNative';
-import AdPopUnder from '@/components/ads/AdPopUnder';
 import Ad3lx from '@/components/ads/Ad3lx';
 import { fetchVideos, getCategories } from '@/lib/api';
 import { Video } from '@/types/video';
 import { SITE_CONFIG } from '@/lib/config';
-import { JUICYADS_CONFIG, AD_SIZES, AD_SETTINGS, THREELX_CONFIG } from '@/lib/ads-config';
+import {
+  THREELX_BANNERS,
+  AD_SIZES,
+  AD_SETTINGS,
+} from '@/lib/ads-config';
 
 function HomeContent() {
   const searchParams = useSearchParams();
@@ -165,22 +166,28 @@ function HomeContent() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
 
-      {/* Pop-Under Ad (Optional - can be disabled) */}
-      {AD_SETTINGS.enablePopUnder && (
-        <AdPopUnder adId={JUICYADS_CONFIG.POP_UNDER} enabled={AD_SETTINGS.enablePopUnder} />
-      )}
-
       <Header />
       <ScrollToTop />
 
       <main className="container mx-auto px-4 py-8">
-        {/* Top Banner Ad */}
+        {/* Top Banner Ad - Desktop: 728x90, Mobile: 320x50 */}
         {AD_SETTINGS.enableBanners && (
-          <AdBanner
-            adId={JUICYADS_CONFIG.TOP_BANNER}
-            width={AD_SIZES.LEADERBOARD.width}
-            height={AD_SIZES.LEADERBOARD.height}
-          />
+          <>
+            <div className="hidden md:block">
+              <Ad3lx
+                adKey={THREELX_BANNERS.LEADERBOARD_728x90}
+                width={AD_SIZES.LEADERBOARD.width}
+                height={AD_SIZES.LEADERBOARD.height}
+              />
+            </div>
+            <div className="block md:hidden">
+              <Ad3lx
+                adKey={THREELX_BANNERS.MOBILE_BANNER_320x50}
+                width={AD_SIZES.MOBILE_BANNER.width}
+                height={AD_SIZES.MOBILE_BANNER.height}
+              />
+            </div>
+          </>
         )}
         {/* Hero Section */}
         <div className="mb-8 text-center">
@@ -207,16 +214,6 @@ function HomeContent() {
           />
         </div>
 
-        {/* 3lx.org Mobile Banner (320x50) - Visible on mobile/tablet only */}
-        {AD_SETTINGS.enable3lxMobileBanner && (
-          <div className="block lg:hidden mb-6">
-            <Ad3lx
-              adKey={THREELX_CONFIG.MOBILE_BANNER_320x50}
-              width={320}
-              height={50}
-            />
-          </div>
-        )}
 
         {/* Video Grid with Infinite Scroll */}
         {loading && videos.length === 0 ? (
@@ -248,10 +245,14 @@ function HomeContent() {
               ))}
             </div>
 
-            {/* Native Ads between video sections */}
-            {AD_SETTINGS.enableNative && videos.length > 8 && (
+            {/* 3lx.org Banner Ads between video sections - 300x250 */}
+            {AD_SETTINGS.enableBanners && videos.length > 8 && (
               <div className="my-8">
-                <AdNative adId={JUICYADS_CONFIG.NATIVE_FEED} />
+                <Ad3lx
+                  adKey={THREELX_BANNERS.MEDIUM_RECTANGLE_300x250}
+                  width={AD_SIZES.MEDIUM_RECTANGLE.width}
+                  height={AD_SIZES.MEDIUM_RECTANGLE.height}
+                />
               </div>
             )}
 
@@ -310,14 +311,23 @@ function HomeContent() {
           </div>
         )}
 
-        {/* Bottom Banner Ad */}
+        {/* Bottom Banner Ad - Desktop: 728x90 OR 468x60, Mobile: 320x50 */}
         {AD_SETTINGS.enableBanners && videos.length > 0 && (
           <div className="mt-12">
-            <AdBanner
-              adId={JUICYADS_CONFIG.BOTTOM_BANNER}
-              width={AD_SIZES.LEADERBOARD.width}
-              height={AD_SIZES.LEADERBOARD.height}
-            />
+            <div className="hidden md:block">
+              <Ad3lx
+                adKey={THREELX_BANNERS.LEADERBOARD_728x90}
+                width={AD_SIZES.LEADERBOARD.width}
+                height={AD_SIZES.LEADERBOARD.height}
+              />
+            </div>
+            <div className="block md:hidden">
+              <Ad3lx
+                adKey={THREELX_BANNERS.MOBILE_BANNER_320x50}
+                width={AD_SIZES.MOBILE_BANNER.width}
+                height={AD_SIZES.MOBILE_BANNER.height}
+              />
+            </div>
           </div>
         )}
       </main>

@@ -5,14 +5,15 @@ import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import Header from '@/components/Header';
 import VideoCard from '@/components/VideoCard';
-import AdBanner from '@/components/ads/AdBanner';
-import AdNative from '@/components/ads/AdNative';
-import AdPopUnder from '@/components/ads/AdPopUnder';
 import Ad3lx from '@/components/ads/Ad3lx';
 import { fetchVideoById, getRelatedVideos } from '@/lib/api';
 import { Video } from '@/types/video';
 import { SITE_CONFIG } from '@/lib/config';
-import { JUICYADS_CONFIG, AD_SIZES, AD_SETTINGS, THREELX_CONFIG } from '@/lib/ads-config';
+import {
+  THREELX_BANNERS,
+  AD_SIZES,
+  AD_SETTINGS,
+} from '@/lib/ads-config';
 
 export default function VideoPage() {
   const params = useParams();
@@ -213,21 +214,27 @@ export default function VideoPage() {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(videoStructuredData) }}
         />
 
-        {/* Pop-Under Ad (Video pages have highest CPM) */}
-        {AD_SETTINGS.enablePopUnder && (
-          <AdPopUnder adId={JUICYADS_CONFIG.POP_UNDER} enabled={AD_SETTINGS.enablePopUnder} />
-        )}
-
         <Header />
 
       <main className="container mx-auto px-4 py-8">
-        {/* Top Banner Ad */}
+        {/* Top Banner Ad - Desktop: 728x90, Mobile: 320x50 */}
         {AD_SETTINGS.enableBanners && (
-          <AdBanner
-            adId={JUICYADS_CONFIG.TOP_BANNER}
-            width={AD_SIZES.LEADERBOARD.width}
-            height={AD_SIZES.LEADERBOARD.height}
-          />
+          <>
+            <div className="hidden md:block">
+              <Ad3lx
+                adKey={THREELX_BANNERS.LEADERBOARD_728x90}
+                width={AD_SIZES.LEADERBOARD.width}
+                height={AD_SIZES.LEADERBOARD.height}
+              />
+            </div>
+            <div className="block md:hidden">
+              <Ad3lx
+                adKey={THREELX_BANNERS.MOBILE_BANNER_320x50}
+                width={AD_SIZES.MOBILE_BANNER.width}
+                height={AD_SIZES.MOBILE_BANNER.height}
+              />
+            </div>
+          </>
         )}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Main Video Section */}
@@ -259,17 +266,6 @@ export default function VideoPage() {
                 <span>View on Eporner.com</span>
               </a>
             </div>
-
-            {/* 3lx.org Mobile Banner (320x50) - Visible on mobile/tablet only */}
-            {AD_SETTINGS.enable3lxMobileBanner && (
-              <div className="block lg:hidden mb-6">
-                <Ad3lx
-                  adKey={THREELX_CONFIG.MOBILE_BANNER_320x50}
-                  width={320}
-                  height={50}
-                />
-              </div>
-            )}
 
             {/* Video Info */}
             <div className="bg-gray-900 rounded-lg p-6">
@@ -347,25 +343,40 @@ export default function VideoPage() {
               </div>
             </div>
 
-            {/* Native Ad below video */}
-            {AD_SETTINGS.enableNative && (
+            {/* 3lx.org Banner Ad below video - 300x250 */}
+            {AD_SETTINGS.enableBanners && (
               <div className="mt-6">
-                <AdNative adId={JUICYADS_CONFIG.CONTENT_RECTANGLE} />
+                <Ad3lx
+                  adKey={THREELX_BANNERS.MEDIUM_RECTANGLE_300x250}
+                  width={AD_SIZES.MEDIUM_RECTANGLE.width}
+                  height={AD_SIZES.MEDIUM_RECTANGLE.height}
+                />
               </div>
             )}
           </div>
 
           {/* Related Videos Sidebar */}
           <div className="lg:col-span-1">
-            {/* Sidebar Rectangle Ad */}
+            {/* Sidebar Banner Ads - 300x250 and 160x600 */}
             {AD_SETTINGS.enableBanners && (
-              <div className="mb-6">
-                <AdBanner
-                  adId={JUICYADS_CONFIG.SIDEBAR_RECTANGLE}
-                  width={AD_SIZES.MEDIUM_RECTANGLE.width}
-                  height={AD_SIZES.MEDIUM_RECTANGLE.height}
-                />
-              </div>
+              <>
+                <div className="mb-6">
+                  <Ad3lx
+                    adKey={THREELX_BANNERS.MEDIUM_RECTANGLE_300x250}
+                    width={AD_SIZES.MEDIUM_RECTANGLE.width}
+                    height={AD_SIZES.MEDIUM_RECTANGLE.height}
+                  />
+                </div>
+                {AD_SETTINGS.enableSidebarAds && (
+                  <div className="mb-6 hidden xl:block">
+                    <Ad3lx
+                      adKey={THREELX_BANNERS.WIDE_SKYSCRAPER_160x600}
+                      width={AD_SIZES.WIDE_SKYSCRAPER.width}
+                      height={AD_SIZES.WIDE_SKYSCRAPER.height}
+                    />
+                  </div>
+                )}
+              </>
             )}
             <h2 className="text-xl font-bold text-white mb-4">Related Videos</h2>
             <div className="space-y-4">
@@ -376,14 +387,23 @@ export default function VideoPage() {
           </div>
         </div>
 
-        {/* Bottom Banner Ad */}
+        {/* Bottom Banner Ad - Desktop: 728x90, Mobile: 320x50 */}
         {AD_SETTINGS.enableBanners && (
           <div className="mt-12">
-            <AdBanner
-              adId={JUICYADS_CONFIG.BOTTOM_BANNER}
-              width={AD_SIZES.LEADERBOARD.width}
-              height={AD_SIZES.LEADERBOARD.height}
-            />
+            <div className="hidden md:block">
+              <Ad3lx
+                adKey={THREELX_BANNERS.LEADERBOARD_728x90}
+                width={AD_SIZES.LEADERBOARD.width}
+                height={AD_SIZES.LEADERBOARD.height}
+              />
+            </div>
+            <div className="block md:hidden">
+              <Ad3lx
+                adKey={THREELX_BANNERS.MOBILE_BANNER_320x50}
+                width={AD_SIZES.MOBILE_BANNER.width}
+                height={AD_SIZES.MOBILE_BANNER.height}
+              />
+            </div>
           </div>
         )}
       </main>
