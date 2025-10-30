@@ -52,6 +52,15 @@ export const AD_SIZES = {
 };
 
 /**
+ * 3lx.org Configuration (highperformanceformat.com)
+ * Mobile banner ads (320x50)
+ */
+export const THREELX_CONFIG = {
+  // Your 3lx.org ad key
+  MOBILE_BANNER_320x50: '33373e81214ae58c1a9fdf6957e0525d',
+};
+
+/**
  * Enable/Disable Ad Types
  */
 export const AD_SETTINGS = {
@@ -60,4 +69,5 @@ export const AD_SETTINGS = {
   enablePopUnder: false, // Set to true to enable pop-unders (intrusive)
   enableVideoAds: true,
   enableStickyFooter: true, // Mobile sticky ad at bottom
+  enable3lxMobileBanner: true, // 3lx.org mobile banner (320x50)
 };

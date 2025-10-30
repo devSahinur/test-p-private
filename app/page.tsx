@@ -10,10 +10,11 @@ import ScrollToTop from '@/components/ScrollToTop';
 import AdBanner from '@/components/ads/AdBanner';
 import AdNative from '@/components/ads/AdNative';
 import AdPopUnder from '@/components/ads/AdPopUnder';
+import Ad3lx from '@/components/ads/Ad3lx';
 import { fetchVideos, getCategories } from '@/lib/api';
 import { Video } from '@/types/video';
 import { SITE_CONFIG } from '@/lib/config';
-import { JUICYADS_CONFIG, AD_SIZES, AD_SETTINGS } from '@/lib/ads-config';
+import { JUICYADS_CONFIG, AD_SIZES, AD_SETTINGS, THREELX_CONFIG } from '@/lib/ads-config';
 
 function HomeContent() {
   const searchParams = useSearchParams();
@@ -205,6 +206,17 @@ function HomeContent() {
             onCategoryChange={setSelectedCategory}
           />
         </div>
+
+        {/* 3lx.org Mobile Banner (320x50) - Visible on mobile/tablet only */}
+        {AD_SETTINGS.enable3lxMobileBanner && (
+          <div className="block lg:hidden mb-6">
+            <Ad3lx
+              adKey={THREELX_CONFIG.MOBILE_BANNER_320x50}
+              width={320}
+              height={50}
+            />
+          </div>
+        )}
 
         {/* Video Grid with Infinite Scroll */}
         {loading && videos.length === 0 ? (
